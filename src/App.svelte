@@ -1,36 +1,38 @@
 <script>
   import { Router, Link, Route } from "svelte-routing";
 
-  import Header from "./components/Header.svelte";
-  import Footer from "./components/Footer.svelte";
-
-  import Start from "./routes/start/Index.svelte";
+  import One from "./galleries/One.svelte";
+  import Two from "./galleries/Two.svelte";
+  import Three from "./galleries/Three.svelte";
 
   export let url = "";
 </script>
 
 <Router url="{url}">
 
-	<div class="header">
-        <div class="wrapper">
-            <Header />
-        </div>
-    </div>
-
-    <div class="page">
-        <div class="wrapper">
-
-            <main>
-                <Route path="/"><Start /></Route>
-            </main>
-
-            <Footer />
-
-        </div>
-    </div>
+	<Route path="/">
+    <ul>
+      <li>
+        <Link to="one">Beispiel 1</Link>
+      </li>
+      <li>
+        <Link to="two">Beispiel 2</Link>
+      </li>
+      <li>
+        <Link to="three">Beispiel 3</Link>
+      </li>
+    </ul>
+  </Route>
+  <Route path="one" component={One} />
+  <Route path="two" component={Two} />
+  <Route path="three" component={Three} />
 
 </Router>
 
 <style lang="scss">
+
+  ul {
+    padding: 1rem;
+  }
 
 </style>
